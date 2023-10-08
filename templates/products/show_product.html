@@ -25,5 +25,19 @@
                 </div>
             </div>
         </div>
+        <form action="{% url 'add_new_comment' id=product.id %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+    
+            <button type="submit" class="save btn btn-dark">Enviar</button>
+        </form>
+    
+        <h3>Comentarios</h3>
+        <ul>
+            {% for comment in comments %}
+                <li> {{comment}} </li>    
+            {% endfor %}
+        </ul> 
     </div>
-{% endblock %}    
+
+{% endblock content %}    
